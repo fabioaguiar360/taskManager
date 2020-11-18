@@ -14,7 +14,7 @@ export default function App() {
   const [task, setTask] = useState([]);
   const [open, setOpen] = useState(false);
   const [inputTask, setImputTask] = useState('');
-
+  
   const deleteTask = useCallback((data) => {
     const res = task.filter(r => r.key !== data.key);
     setTask(res);
@@ -33,10 +33,11 @@ export default function App() {
 
     loadTask();
   }, []);
-  // see if it works prop
+  // look at if it works properly 
   useEffect(()=>{
+    
     async function saveTask(){
-      await AsuncStorage.setItem('@task', JSON.stringify(task));
+      await AsyncStorage.setItem('@task', JSON.stringify(task));
     }
 
     saveTask();
@@ -64,7 +65,7 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
       <View>
-        <Text style={styles.title}>TAREFAS DA JORNADA</Text>
+        <Text style={styles.title}>Task Manager</Text>
       </View>
 
       <FlatList
